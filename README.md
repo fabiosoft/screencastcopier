@@ -1,4 +1,5 @@
-Useful Application for manage code video screencast
+## Screencast Copier
+Useful Application for manage code video screencast.
 
 ### Features:
 - Import a text 
