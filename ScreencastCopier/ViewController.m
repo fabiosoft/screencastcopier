@@ -50,13 +50,16 @@
 				currentLine = [currentLine stringByAppendingString:[NSString stringWithFormat:@"%c",NSNewlineCharacter]];
 			}
 			[pasteboard setString:currentLine forType:NSPasteboardTypeString];
-			//invoke cmd+v for real
-			[self keyPress:keyCode includingCommandKey:YES];
+			
 		}else{
 			//play done sound
 			_currentBufferPosition = -1;
 			[_bufferToPaste removeAllObjects];
 		}
+		//even the buffer is empty
+		//invoke cmd+v for real
+		//so if you copy somthing else after the buffered text you can use the OS clipboard as usual
+		[self keyPress:keyCode includingCommandKey:YES];
 	}];
 }
 
@@ -83,6 +86,7 @@
 	CFRelease(source);
 }
 
+//user dragged a file on the drop zone
 -(void)dragOperationisOver:(DragDropView *)dropView{
 //	NSLog(@"Dragged files");
 //	for (NSString *filename in dropView.draggedFilenames) {
@@ -93,12 +97,7 @@
 }
 
 
-- (void)setRepresentedObject:(id)representedObject {
-	[super setRepresentedObject:representedObject];
-	
-	// Update the view, if already loaded.
-}
-
+//choose file from system dialog
 - (IBAction)browseForFile:(id)sender {
 	NSOpenPanel* openPanel = [NSOpenPanel openPanel];
  
@@ -117,6 +116,7 @@
 	
 }
 
+//prepare the text file to be bufferized each line to clipboard
 -(void)bufferizeTheFile:(NSURL *)textFileURL{
 	NSString* filepath = [textFileURL.path stringByResolvingSymlinksInPath];
 	
@@ -127,7 +127,13 @@
 	//NSLog(@"%@",_bufferToPaste);
 }
 
+- (void)setRepresentedObject:(id)representedObject {
+	[super setRepresentedObject:representedObject];
+	
+	// Update the view, if already loaded.
+}
 
+//utility (non used) methods
 - (IBAction)copy:(id)sender {
 	
 	BOOL success = [pasteboard setString:_textField.stringValue forType:NSPasteboardTypeString];
