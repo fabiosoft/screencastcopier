@@ -11,22 +11,22 @@
 #import "DDHotKeyCenter.h"
 #import "DDHotKeyUtilities.h"
 #import "DDHotKeyTextField.h"
+#import "DragDropView.h"
 
 
-
-//#import "MASShortcut/MASShortcutView.h"
-//#import "MASShortcut/MASShortcutView+UserDefaults.h"
-//#import "MASShortcut/MASShortcut+UserDefaults.h"
-//#import "MASShortcut/MASShortcut+Monitoring.h"
-
-
-@interface ViewController : NSViewController{
+@interface ViewController : NSViewController <DragDropViewDelegate>{
 	NSPasteboard *pasteboard;
-
 }
 
+@property (assign) NSUInteger currentBufferPosition; // < 0 no buffer available
+@property (strong) NSMutableArray *bufferToPaste;
 @property (strong) IBOutlet NSTextField *textField;
+@property (strong) IBOutlet NSButton *terminalWindowCheck;
+@property (strong) IBOutlet NSButton *globalHotKeyCheck;
 
+
+- (IBAction)checkHotKeyEnabled:(CGKeyCode)sender;
+- (IBAction)browseForFile:(id)sender;
 - (IBAction)copy:(id)sender;
 - (IBAction)paste:(id)sender;
 

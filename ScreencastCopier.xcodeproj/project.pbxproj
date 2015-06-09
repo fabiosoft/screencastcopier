@@ -18,6 +18,7 @@
 		E5BAFDCA1B264CBD006AFE66 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BAFDC51B264CBD006AFE66 /* DDHotKeyCenter.m */; };
 		E5BAFDCB1B264CBD006AFE66 /* DDHotKeyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BAFDC71B264CBD006AFE66 /* DDHotKeyTextField.m */; };
 		E5BAFDCC1B264CBD006AFE66 /* DDHotKeyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BAFDC91B264CBD006AFE66 /* DDHotKeyUtilities.m */; };
+		E5BAFDD01B26677B006AFE66 /* DragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BAFDCF1B26677B006AFE66 /* DragDropView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		E5BAFDC71B264CBD006AFE66 /* DDHotKeyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyTextField.m; sourceTree = "<group>"; };
 		E5BAFDC81B264CBD006AFE66 /* DDHotKeyUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyUtilities.h; sourceTree = "<group>"; };
 		E5BAFDC91B264CBD006AFE66 /* DDHotKeyUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyUtilities.m; sourceTree = "<group>"; };
+		E5BAFDCE1B26677B006AFE66 /* DragDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropView.h; sourceTree = "<group>"; };
+		E5BAFDCF1B26677B006AFE66 /* DragDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragDropView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,8 @@
 				E5BAFD8A1B2634E4006AFE66 /* ViewController.m */,
 				E5BAFD8C1B2634E4006AFE66 /* Images.xcassets */,
 				E5BAFD8E1B2634E4006AFE66 /* Main.storyboard */,
+				E5BAFDCE1B26677B006AFE66 /* DragDropView.h */,
+				E5BAFDCF1B26677B006AFE66 /* DragDropView.m */,
 				E5BAFDCD1B265577006AFE66 /* DDHotKey */,
 				E5BAFD821B2634E4006AFE66 /* Supporting Files */,
 			);
@@ -248,6 +253,7 @@
 			files = (
 				E5BAFDCA1B264CBD006AFE66 /* DDHotKeyCenter.m in Sources */,
 				E5BAFDCB1B264CBD006AFE66 /* DDHotKeyTextField.m in Sources */,
+				E5BAFDD01B26677B006AFE66 /* DragDropView.m in Sources */,
 				E5BAFDCC1B264CBD006AFE66 /* DDHotKeyUtilities.m in Sources */,
 				E5BAFD8B1B2634E4006AFE66 /* ViewController.m in Sources */,
 				E5BAFD881B2634E4006AFE66 /* main.m in Sources */,
