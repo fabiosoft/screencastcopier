@@ -17,7 +17,7 @@
 	_currentBufferPosition = -1; //no buffer available
 	pasteboard = [NSPasteboard generalPasteboard];
 	[pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
-
+	[nextBufferedLabel setStringValue:@"Drag and drop code file here"];
 
 	[self checkHotKeyEnabled:kVK_ANSI_V];
 	
@@ -39,7 +39,7 @@
 	}
 }
 
-//register global hotkey
+//register global hotkey is pressed
 -(DDHotKey *)registerHotKey:(CGKeyCode)keyCode{
 	return [[DDHotKeyCenter sharedHotKeyCenter] registerHotKeyWithKeyCode:keyCode modifierFlags:NSCommandKeyMask task:^(NSEvent *event) {
 		//step forward in the buffer
@@ -50,11 +50,19 @@
 			if(_terminalWindowCheck.state == FALSE){
 				currentLine = [currentLine stringByAppendingString:[NSString stringWithFormat:@"%c",NSNewlineCharacter]];
 			}
-			[pasteboard setString:currentLine forType:NSPasteboardTypeString];
 			
+			//next line
+			NSString *nextBuffer = @"";
+			@try {nextBuffer = (NSString *)_bufferToPaste[_currentBufferPosition+1];}
+			@catch (NSException *exception) {nextBuffer = @"---";}
+			@finally {[nextBufferedLabel setStringValue:nextBuffer];}
+			//
+			
+			[pasteboard setString:currentLine forType:NSPasteboardTypeString];
 		}else{
 			//play done sound
 			_currentBufferPosition = -1;
+			[pasteboard setString:@"" forType:NSPasteboardTypeString];
 			[_bufferToPaste removeAllObjects];
 		}
 		//even the buffer is empty
@@ -65,7 +73,7 @@
 }
 
 //cmd-v for real
--(void)keyPress:(CGKeyCode)keycode includingCommandKey:(BOOL) includeCommandkey{
+-(void)keyPress:(CGKeyCode)keycode includingCommandKey:(BOOL)includeCommandkey{
 	//context
 	CGEventSourceRef source = CGEventSourceCreate(kCGEventSourceStateCombinedSessionState);
 	//key down
@@ -93,8 +101,7 @@
 //	for (NSString *filename in dropView.draggedFilenames) {
 //		NSLog(@"%@",filename);
 //	}
-	[statusLabel setStringValue:[NSString stringWithFormat:@"Loaded: %@", dropview.draggedFilenames[0]]];
-	NSURL *textFileURL = [NSURL URLWithString:dropView.draggedFilenames[0]];
+	NSURL *textFileURL = [NSURL URLWithString:[dropView.draggedFilenames.firstObject stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 	[self bufferizeTheFile:textFileURL];
 	
 }
@@ -113,7 +120,7 @@
 	openPanel.allowedFileTypes = [[dropview allowedFiletypes]copy];
  
 	if ([openPanel runModal] == NSModalResponseOK) {
-		NSURL *textFileURL = [[openPanel URLs] objectAtIndex:0];
+		NSURL *textFileURL = [[openPanel URLs]firstObject];
 		//TODO: verify before bufferize if it's a code file
 		[self bufferizeTheFile:textFileURL];
 	}
@@ -123,12 +130,16 @@
 //prepare the text file to be bufferized each line to clipboard
 -(void)bufferizeTheFile:(NSURL *)textFileURL{
 	NSString* filepath = [textFileURL.path stringByResolvingSymlinksInPath];
+	[statusLabel setStringValue:[NSString stringWithFormat:@"Loaded: %@", filepath]];
 	
 	NSError *error = nil;
 	NSString *words = [[NSString alloc] initWithContentsOfFile:filepath
 													  encoding:NSUTF8StringEncoding error:&error];
 	_bufferToPaste = [[words componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]]mutableCopy];
-	//NSLog(@"%@",_bufferToPaste);
+	if(_bufferToPaste.count > 0){
+		//first line
+		[nextBufferedLabel setStringValue:_bufferToPaste.firstObject];
+	}
 }
 
 - (void)setRepresentedObject:(id)representedObject {

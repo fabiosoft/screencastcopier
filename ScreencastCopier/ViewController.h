@@ -18,9 +18,10 @@
 	NSPasteboard *pasteboard;
 	IBOutlet DragDropView *dropview;
 	IBOutlet NSTextField *statusLabel;
+	IBOutlet NSTextField *nextBufferedLabel;
 }
 
-@property (assign) NSUInteger currentBufferPosition; // < 0 no buffer available
+@property (assign) NSInteger currentBufferPosition; // < 0 no buffer available
 @property (strong) NSMutableArray *bufferToPaste;
 @property (strong) IBOutlet NSTextField *textField;
 @property (strong) IBOutlet NSButton *terminalWindowCheck;

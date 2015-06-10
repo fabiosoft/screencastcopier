@@ -750,6 +750,7 @@
                     <connections>
                         <outlet property="dropview" destination="rqk-Ja-HwZ" id="Ivg-az-6Uk"/>
                         <outlet property="globalHotKeyCheck" destination="bMu-Ws-gsP" id="z0K-QS-Gwu"/>
+                        <outlet property="nextBufferedLabel" destination="Hqt-hV-W9Z" id="WTi-gy-7kv"/>
                         <outlet property="statusLabel" destination="179-SI-dlf" id="IFi-7W-EIc"/>
                         <outlet property="terminalWindowCheck" destination="bMI-0g-jN3" id="UFo-LF-lFq"/>
                     </connections>
