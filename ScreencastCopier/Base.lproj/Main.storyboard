@@ -644,7 +644,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="-59" y="-53"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -662,46 +662,18 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="7" y="181"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="278"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n7M-Oz-Rkq">
-                                <rect key="frame" x="312" y="27" width="75" height="32"/>
-                                <buttonCell key="cell" type="push" title="Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kpC-Wu-skz">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="copy:" target="XfG-lQ-9wD" id="cwq-o3-tna"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGO-CN-83Y">
-                                <rect key="frame" x="381" y="27" width="75" height="32"/>
-                                <buttonCell key="cell" type="push" title="Paste" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nrg-cf-ZpU">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="paste:" target="XfG-lQ-9wD" id="U7O-QL-5nt"/>
-                                </connections>
-                            </button>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9k-pl-dHB">
-                                <rect key="frame" x="318" y="219" width="132" height="31"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="ciao screencast" drawsBackground="YES" id="9gh-HL-6lM">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMu-Ws-gsP">
-                                <rect key="frame" x="18" y="234" width="108" height="18"/>
+                            <button horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMu-Ws-gsP">
+                                <rect key="frame" x="18" y="239" width="108" height="25"/>
                                 <buttonCell key="cell" type="check" title="Global hotkey" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XaW-jP-HCN">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -710,8 +682,41 @@
                                     <action selector="checkHotKeyEnabled:" target="XfG-lQ-9wD" id="9Td-0s-mzA"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nyA-JR-wcN">
-                                <rect key="frame" x="14" y="33" width="87" height="32"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="rqk-Ja-HwZ" customClass="DragDropView">
+                                <rect key="frame" x="41" y="28" width="398" height="205"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="205" id="qcF-UD-NYQ"/>
+                                    <constraint firstAttribute="width" constant="398" id="xqL-vT-ZPZ"/>
+                                </constraints>
+                            </customView>
+                            <button horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMI-0g-jN3">
+                                <rect key="frame" x="140" y="239" width="147" height="25"/>
+                                <buttonCell key="cell" type="check" title="Terminal window" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="L2Z-5a-MI2">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="179-SI-dlf">
+                                <rect key="frame" x="8" y="4" width="465" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="status" id="hTC-oo-fK6">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hqt-hV-W9Z">
+                                <rect key="frame" x="8" y="105" width="465" height="34"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Prossima stringa da incollare" usesSingleLineMode="YES" id="mG8-ke-xis">
+                                    <font key="font" metaFont="system" size="24"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nyA-JR-wcN">
+                                <rect key="frame" x="390" y="234" width="87" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="rzb-65-ZmQ"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5zx-NL-rmo">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -720,27 +725,38 @@
                                     <action selector="browseForFile:" target="XfG-lQ-9wD" id="lF2-yb-whe"/>
                                 </connections>
                             </button>
-                            <button horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMI-0g-jN3">
-                                <rect key="frame" x="18" y="193" width="253" height="25"/>
-                                <buttonCell key="cell" type="check" title="Terminal window" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="L2Z-5a-MI2">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rqk-Ja-HwZ" customClass="DragDropView">
-                                <rect key="frame" x="20" y="75" width="420" height="112"/>
-                            </customView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="rqk-Ja-HwZ" firstAttribute="top" secondItem="nyA-JR-wcN" secondAttribute="bottom" constant="8" id="2bq-ZG-EXR"/>
+                            <constraint firstItem="rqk-Ja-HwZ" firstAttribute="top" secondItem="bMI-0g-jN3" secondAttribute="bottom" constant="8" id="7y3-Ok-DcC"/>
+                            <constraint firstItem="bMI-0g-jN3" firstAttribute="leading" secondItem="bMu-Ws-gsP" secondAttribute="trailing" constant="18" id="9Zl-d7-Zkl"/>
+                            <constraint firstAttribute="bottom" secondItem="179-SI-dlf" secondAttribute="bottom" constant="4" id="ExM-gG-bh1"/>
+                            <constraint firstAttribute="trailing" secondItem="rqk-Ja-HwZ" secondAttribute="trailing" constant="41" id="FE6-Tj-fju"/>
+                            <constraint firstItem="179-SI-dlf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="NYt-5Q-B4f"/>
+                            <constraint firstItem="bMI-0g-jN3" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="16" id="SRK-yA-ovz"/>
+                            <constraint firstItem="nyA-JR-wcN" firstAttribute="leading" secondItem="bMI-0g-jN3" secondAttribute="trailing" constant="100" id="Wzo-5f-tT5"/>
+                            <constraint firstItem="bMu-Ws-gsP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="YGP-fX-mVs"/>
+                            <constraint firstAttribute="trailing" secondItem="nyA-JR-wcN" secondAttribute="trailing" constant="20" id="gLI-R6-BJ9"/>
+                            <constraint firstItem="bMu-Ws-gsP" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="16" id="h21-ME-4Hk"/>
+                            <constraint firstItem="179-SI-dlf" firstAttribute="top" secondItem="rqk-Ja-HwZ" secondAttribute="bottom" constant="7" id="j9X-GB-vME"/>
+                            <constraint firstItem="nyA-JR-wcN" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="16" id="jMX-mT-AnB"/>
+                            <constraint firstItem="rqk-Ja-HwZ" firstAttribute="top" secondItem="bMu-Ws-gsP" secondAttribute="bottom" constant="8" id="nzp-Ow-xRw"/>
+                            <constraint firstItem="rqk-Ja-HwZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="41" id="oXS-Am-hcL"/>
+                            <constraint firstItem="bMI-0g-jN3" firstAttribute="leading" secondItem="bMu-Ws-gsP" secondAttribute="trailing" constant="18" id="qjO-dc-TRt"/>
+                            <constraint firstAttribute="trailing" secondItem="179-SI-dlf" secondAttribute="trailing" constant="9" id="saI-yW-svF"/>
+                            <constraint firstItem="rqk-Ja-HwZ" firstAttribute="top" secondItem="bMI-0g-jN3" secondAttribute="bottom" constant="8" id="slz-IE-fOn"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="dropview" destination="rqk-Ja-HwZ" id="Ivg-az-6Uk"/>
                         <outlet property="globalHotKeyCheck" destination="bMu-Ws-gsP" id="z0K-QS-Gwu"/>
+                        <outlet property="statusLabel" destination="179-SI-dlf" id="IFi-7W-EIc"/>
                         <outlet property="terminalWindowCheck" destination="bMI-0g-jN3" id="UFo-LF-lFq"/>
-                        <outlet property="textField" destination="C9k-pl-dHB" id="aEl-13-HvH"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-33" y="626"/>
+            <point key="canvasLocation" x="7" y="632"/>
         </scene>
     </scenes>
 </document>

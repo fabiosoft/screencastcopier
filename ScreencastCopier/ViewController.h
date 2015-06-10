@@ -16,6 +16,8 @@
 
 @interface ViewController : NSViewController <DragDropViewDelegate>{
 	NSPasteboard *pasteboard;
+	IBOutlet DragDropView *dropview;
+	IBOutlet NSTextField *statusLabel;
 }
 
 @property (assign) NSUInteger currentBufferPosition; // < 0 no buffer available

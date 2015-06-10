@@ -12,13 +12,18 @@
 @implementation DragDropView
 
 
-- (id)initWithFrame:(NSRect)frame{
+- (id)initWithFrame:(NSRect)frame withAllowedFileTypes:(NSArray *)fileTypes{
 	self = [super initWithFrame:frame];
 	if (self) {
 		_draggedFilenames = [NSMutableArray array];
+		_allowedFiletypes = [NSMutableArray arrayWithArray:fileTypes];
 		[self registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
 	}
 	return self;
+}
+
+- (id)initWithFrame:(NSRect)frame{
+	return [self initWithFrame:frame withAllowedFileTypes:@[@"txt"]];
 }
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender{
@@ -59,11 +64,9 @@
 
 - (BOOL)performDragOperation:(id < NSDraggingInfo >)sender {
 	NSArray *draggedFilenames = [[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType];
-	if ([[[draggedFilenames objectAtIndex:0] pathExtension] isEqual:@"txt"]){
-		return YES;
-	} else {
-		return NO;
-	}
+	NSString *draggedExtension = [[draggedFilenames objectAtIndex:0] pathExtension];
+
+	return [_allowedFiletypes containsObject:draggedExtension];
 }
 
 - (void)concludeDragOperation:(id <NSDraggingInfo>)sender{

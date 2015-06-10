@@ -21,7 +21,10 @@
 
 	[self checkHotKeyEnabled:kVK_ANSI_V];
 	
-	DragDropView *dropview = [[DragDropView alloc]initWithFrame:CGRectMake(20, 75, 420, 112)];
+	dropview = [[DragDropView alloc]initWithFrame:CGRectMake(20, 20, 440, 205) withAllowedFileTypes:@[@"txt",@"c",@"mm"]];
+//	dropview = [[DragDropView alloc]init];
+//	NSArray *allowedTypes = @[@"txt",@"c",@"mm"];
+//	[dropview setAllowedFiletypes:[allowedTypes mutableCopy]];
 	[dropview setDelegate:self];
 	[self.view addSubview:dropview];
 }
@@ -29,11 +32,9 @@
 - (IBAction)checkHotKeyEnabled:(CGKeyCode)keycode{
 	if(_globalHotKeyCheck.state == TRUE){
 		//register for cmd+v
-		NSLog(@"reg");
 		[self registerHotKey:kVK_ANSI_V];
 	}else{
 		//unregister hotkey
-		NSLog(@"unreg");
 		[[DDHotKeyCenter sharedHotKeyCenter]unregisterAllHotKeys];
 	}
 }
@@ -58,7 +59,7 @@
 		}
 		//even the buffer is empty
 		//invoke cmd+v for real
-		//so if you copy somthing else after the buffered text you can use the OS clipboard as usual
+		//so if you copy something else after the buffered text you can use the OS clipboard as usual
 		[self keyPress:keyCode includingCommandKey:YES];
 	}];
 }
@@ -92,8 +93,10 @@
 //	for (NSString *filename in dropView.draggedFilenames) {
 //		NSLog(@"%@",filename);
 //	}
+	[statusLabel setStringValue:[NSString stringWithFormat:@"Loaded: %@", dropview.draggedFilenames[0]]];
 	NSURL *textFileURL = [NSURL URLWithString:dropView.draggedFilenames[0]];
 	[self bufferizeTheFile:textFileURL];
+	
 }
 
 
@@ -101,16 +104,17 @@
 - (IBAction)browseForFile:(id)sender {
 	NSOpenPanel* openPanel = [NSOpenPanel openPanel];
  
-	openPanel.title = @"Choose a .TXT file";
+	openPanel.title = @"Choose a code file";
 	openPanel.showsResizeIndicator = YES;
 	openPanel.showsHiddenFiles = NO;
 	openPanel.canChooseDirectories = NO;
 	openPanel.canCreateDirectories = YES;
 	openPanel.allowsMultipleSelection = NO;
-	openPanel.allowedFileTypes = @[@"txt"];
+	openPanel.allowedFileTypes = [[dropview allowedFiletypes]copy];
  
 	if ([openPanel runModal] == NSModalResponseOK) {
 		NSURL *textFileURL = [[openPanel URLs] objectAtIndex:0];
+		//TODO: verify before bufferize if it's a code file
 		[self bufferizeTheFile:textFileURL];
 	}
 	

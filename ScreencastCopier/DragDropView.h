@@ -17,8 +17,11 @@
 	BOOL highlight;
 }
 
+- (id)initWithFrame:(NSRect)frame withAllowedFileTypes:(NSArray *)fileTypes;
+
 @property (nonatomic, assign) id<DragDropViewDelegate>  delegate;
 @property (strong) NSMutableArray *draggedFilenames;
+@property (strong) NSMutableArray *allowedFiletypes; //file extensions allowed to drop (default: txt)
 
 @end
 
